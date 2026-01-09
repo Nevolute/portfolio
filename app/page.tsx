@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ServiceCard from "./components/ServiceCard";
-import DemoCard from "./components/DemoCard";
 import ContactForm from "./components/ContactForm";
 
 const trainingServices = [
@@ -35,9 +34,16 @@ const trainingServices = [
     description: "Learn to lift and shift on-premise services to cloud",
     features: ["Migration Strategies", "Infrastructure as Code", "CI/CD Pipelines", "Security Best Practices"],
   },
-];
-
-const consultingServices = [
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
+    title: "Leadership & Soft Skills",
+    description: "Develop essential leadership and communication skills",
+    features: ["Team Architecture", "Communication", "Agile Leadership", "Conflict Resolution"],
+  },
   {
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,6 +64,9 @@ const consultingServices = [
     description: "Comprehensive QA strategies and test automation",
     features: ["Test Strategy", "Automation Frameworks", "Performance Testing", "Security Audits"],
   },
+];
+
+const consultingServices = [
   {
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -123,68 +132,38 @@ const products = [
   },
 ];
 
-const demos = [
-  {
-    title: "Inventory Pro Demo",
-    description: "Experience our full-featured inventory management system with real-time tracking and analytics.",
-    imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&h=400&fit=crop",
-    demoUrl: "#",
-    tags: ["Inventory", "Analytics", "Real-time"],
-  },
-  {
-    title: "E-commerce Platform",
-    description: "Explore our modern e-commerce solution with multi-vendor support and seamless checkout.",
-    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=400&fit=crop",
-    demoUrl: "#",
-    tags: ["E-commerce", "Multi-vendor", "Payments"],
-  },
-  {
-    title: "AI Workflow Automation",
-    description: "See how our AI-powered automation can streamline your business processes.",
-    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
-    demoUrl: "#",
-    tags: ["AI/ML", "Automation", "Analytics"],
-  },
-];
-
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white text-gray-900">
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-800/20 rounded-full blur-3xl" />
-        </div>
-        <div className="max-w-7xl mx-auto relative">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Transform Your Business with{" "}
-              <span className="gradient-text">Nevolute Cloud Labs</span>
-            </h1>
-            <p className="text-xl text-purple-200/70 mb-8 max-w-2xl mx-auto">
-              Your trusted partner for enterprise training, software consulting, and innovative product development. We help businesses thrive in the digital age.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="#contact"
-                className="bg-purple-600 hover:bg-purple-500 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-colors"
-              >
-                Get Started Today
-              </a>
-              <a
-                href="#services"
-                className="border border-purple-600 text-purple-300 hover:bg-purple-600/10 px-8 py-4 rounded-xl text-lg font-semibold transition-colors"
-              >
-                Explore Services
-              </a>
-            </div>
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gray-50 border-b border-gray-100">
+        <div className="max-w-7xl mx-auto text-center max-w-4xl">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 leading-tight tracking-tight">
+            Transform Your Business with{" "}
+            <span className="text-gold-600">Nevolute Cloud Labs</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Your trusted partner for enterprise training, software consulting, and innovative product development. We help businesses thrive in the digital age.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#contact"
+              className="bg-gray-900 hover:bg-black text-white px-8 py-4 rounded-full text-lg font-semibold transition-transform hover:-translate-y-1 shadow-md"
+            >
+              Get Started Today
+            </a>
+            <a
+              href="#services"
+              className="bg-white border border-gray-200 text-gray-700 hover:border-gray-400 px-8 py-4 rounded-full text-lg font-semibold transition-colors"
+            >
+              Explore Services
+            </a>
           </div>
 
           {/* Stats */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-gray-200 pt-12">
             {[
               { value: "15+", label: "Projects Delivered" },
               { value: "10+", label: "Happy Clients" },
@@ -192,8 +171,8 @@ export default function Home() {
               { value: "100%", label: "Client Satisfaction" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-purple-400">{stat.value}</div>
-                <div className="text-purple-200/60 mt-1">{stat.label}</div>
+                <div className="text-3xl sm:text-4xl font-bold text-gray-900">{stat.value}</div>
+                <div className="text-gray-500 mt-1 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -201,11 +180,11 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-purple-950/20">
+      <section id="services" className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Our Service Pillars</h2>
-            <p className="text-purple-200/60 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Our Service Pillars</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               We offer comprehensive solutions across three key pillars to accelerate your digital transformation journey.
             </p>
           </div>
@@ -233,11 +212,11 @@ export default function Home() {
               <a
                 key={index}
                 href={pillar.href}
-                className="bg-purple-950/40 border border-purple-800/30 rounded-2xl p-8 text-center card-hover block"
+                className="bg-gray-50 rounded-2xl p-8 text-center hover:bg-white border border-transparent hover:border-gray-200 hover:shadow-lg transition-all duration-300 block group"
               >
-                <div className="text-5xl mb-4">{pillar.icon}</div>
-                <h3 className="text-2xl font-semibold text-white mb-2">{pillar.title}</h3>
-                <p className="text-purple-200/60">{pillar.description}</p>
+                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">{pillar.icon}</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{pillar.description}</p>
               </a>
             ))}
           </div>
@@ -245,14 +224,14 @@ export default function Home() {
       </section>
 
       {/* Training Section */}
-      <section id="training" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="training" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-purple-400 font-semibold text-sm uppercase tracking-wider">Training</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
+            <span className="text-gold-600 font-bold text-sm uppercase tracking-wider">Training</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4">
               Upskill Your Workforce
             </h2>
-            <p className="text-purple-200/60 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               Comprehensive training programs delivered both on-site and online. Our expert instructors bring real-world experience to every session.
             </p>
           </div>
@@ -262,25 +241,24 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-4 bg-purple-950/40 border border-purple-800/30 rounded-xl px-6 py-4">
-              <span className="text-purple-200/80">Training Formats:</span>
-              <span className="bg-purple-600/20 text-purple-300 px-3 py-1 rounded-full text-sm">On-site</span>
-              <span className="bg-purple-600/20 text-purple-300 px-3 py-1 rounded-full text-sm">Online Live</span>
-              <span className="bg-purple-600/20 text-purple-300 px-3 py-1 rounded-full text-sm">Self-paced</span>
+            <div className="inline-flex flex-wrap justify-center gap-4">
+              <span className="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">On-site Training</span>
+              <span className="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Online Live Sessions</span>
+              <span className="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium shadow-sm">Self-paced Learning</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Consulting Section */}
-      <section id="consulting" className="py-20 px-4 sm:px-6 lg:px-8 bg-purple-950/20">
+      <section id="consulting" className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-purple-400 font-semibold text-sm uppercase tracking-wider">Consulting</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
+            <span className="text-gold-600 font-bold text-sm uppercase tracking-wider">Consulting</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4">
               Expert Technical Guidance
             </h2>
-            <p className="text-purple-200/60 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               Leverage our expertise to overcome technical challenges and accelerate your projects with battle-tested strategies.
             </p>
           </div>
@@ -293,14 +271,14 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <section id="products" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="products" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-purple-400 font-semibold text-sm uppercase tracking-wider">Products</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
+            <span className="text-gold-600 font-bold text-sm uppercase tracking-wider">Products</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4">
               Enterprise-Ready Solutions
             </h2>
-            <p className="text-purple-200/60 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
               Production-ready products designed to solve real business problems. Customizable, scalable, and backed by our expert support.
             </p>
           </div>
@@ -312,48 +290,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Demo Section - Hidden for now
-      <section id="demos" className="py-20 px-4 sm:px-6 lg:px-8 bg-purple-950/20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-purple-400 font-semibold text-sm uppercase tracking-wider">Live Demos</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
-              Try Before You Buy
-            </h2>
-            <p className="text-purple-200/60 max-w-2xl mx-auto">
-              Experience our products firsthand. Explore interactive demos and see how our solutions can transform your business.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {demos.map((demo, index) => (
-              <DemoCard key={index} {...demo} />
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <p className="text-purple-200/60 mb-4">Want a personalized demo for your team?</p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-            >
-              Schedule a Demo
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
-      */}
-
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-purple-400 font-semibold text-sm uppercase tracking-wider">Contact Us</span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-4">
+            <span className="text-gold-600 font-bold text-sm uppercase tracking-wider">Contact Us</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4">
               Let&apos;s Build Something Great
             </h2>
-            <p className="text-purple-200/60">
+            <p className="text-gray-600 text-lg">
               Ready to transform your business? Get in touch and let&apos;s discuss how we can help.
             </p>
           </div>

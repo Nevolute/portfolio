@@ -1,35 +1,41 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0a19;
-  --foreground: #f5f5f7;
-  --purple-50: #faf5ff;
-  --purple-100: #f3e8ff;
-  --purple-200: #e9d5ff;
-  --purple-300: #d8b4fe;
-  --purple-400: #c084fc;
-  --purple-500: #a855f7;
-  --purple-600: #9333ea;
-  --purple-700: #7e22ce;
-  --purple-800: #6b21a8;
-  --purple-900: #581c87;
-  --purple-950: #3b0764;
+  /* Minimalist Light Background (White) */
+  --background: #ffffff;
+  /* Dark Text for Readability (Gray-900 equivalent) */
+  --foreground: #111827;
+
+  /* Gold/Amber Palette (Adjusted for Light Mode Contrast) */
+  --gold-50: #fffbeb;
+  --gold-100: #fef3c7;
+  --gold-200: #fde68a;
+  --gold-300: #fcd34d;
+  --gold-400: #fbbf24;
+  --gold-500: #f59e0b;
+  --gold-600: #d97706;
+  --gold-700: #b45309;
+  --gold-800: #92400e;
+  --gold-900: #78350f;
+  --gold-950: #451a03;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-purple-50: var(--purple-50);
-  --color-purple-100: var(--purple-100);
-  --color-purple-200: var(--purple-200);
-  --color-purple-300: var(--purple-300);
-  --color-purple-400: var(--purple-400);
-  --color-purple-500: var(--purple-500);
-  --color-purple-600: var(--purple-600);
-  --color-purple-700: var(--purple-700);
-  --color-purple-800: var(--purple-800);
-  --color-purple-900: var(--purple-900);
-  --color-purple-950: var(--purple-950);
+
+  --color-gold-50: var(--gold-50);
+  --color-gold-100: var(--gold-100);
+  --color-gold-200: var(--gold-200);
+  --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --color-gold-600: var(--gold-600);
+  --color-gold-700: var(--gold-700);
+  --color-gold-800: var(--gold-800);
+  --color-gold-900: var(--gold-900);
+  --color-gold-950: var(--gold-950);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -44,12 +50,12 @@ html {
   scroll-behavior: smooth;
 }
 
-.gradient-purple {
-  background: linear-gradient(135deg, var(--purple-700) 0%, var(--purple-500) 50%, var(--purple-400) 100%);
+.gradient-gold {
+  background: linear-gradient(135deg, var(--gold-700) 0%, var(--gold-500) 50%, var(--gold-300) 100%);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--purple-300) 0%, var(--purple-500) 100%);
+  background: linear-gradient(135deg, var(--gold-200) 0%, var(--gold-400) 50%, var(--gold-600) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -61,5 +67,5 @@ html {
 
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+  box-shadow: 0 20px 40px rgba(217, 119, 6, 0.15);
 }

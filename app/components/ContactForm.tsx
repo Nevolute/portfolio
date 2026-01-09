@@ -10,7 +10,7 @@ export default function ContactForm() {
     name: "",
     email: "",
     company: "",
-    interestedIn: "",
+    service: "training",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -45,92 +45,109 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-purple-950/30 border border-purple-800/30 rounded-2xl p-8">
-      <div className="grid md:grid-cols-2 gap-6 mb-6">
-        <div>
-          <label className="block text-purple-200/80 text-sm font-medium mb-2">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full bg-purple-950/50 border border-purple-800/30 rounded-xl px-4 py-3 text-white placeholder-purple-200/40 focus:outline-none focus:border-purple-500 transition-colors"
-            placeholder="Your name"
-          />
+    <div className="w-full max-w-2xl mx-auto">
+      {status === "success" ? (
+        <div className="bg-green-50 border border-green-200 text-green-800 p-6 rounded-xl text-center">
+          <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
+          <p>Thank you for reaching out. We&apos;ll get back to you shortly.</p>
+          <button
+            onClick={() => setStatus("idle")}
+            className="mt-4 text-green-700 hover:text-green-900 font-medium"
+          >
+            Send another message
+          </button>
         </div>
-        <div>
-          <label className="block text-purple-200/80 text-sm font-medium mb-2">Email</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full bg-purple-950/50 border border-purple-800/30 rounded-xl px-4 py-3 text-white placeholder-purple-200/40 focus:outline-none focus:border-purple-500 transition-colors"
-            placeholder="your@email.com"
-          />
-        </div>
-      </div>
-      <div className="mb-6">
-        <label className="block text-purple-200/80 text-sm font-medium mb-2">Company</label>
-        <input
-          type="text"
-          name="company"
-          value={formData.company}
-          onChange={handleChange}
-          className="w-full bg-purple-950/50 border border-purple-800/30 rounded-xl px-4 py-3 text-white placeholder-purple-200/40 focus:outline-none focus:border-purple-500 transition-colors"
-          placeholder="Your company"
-        />
-      </div>
-      <div className="mb-6">
-        <label className="block text-purple-200/80 text-sm font-medium mb-2">Interested In</label>
-        <select
-          name="interestedIn"
-          value={formData.interestedIn}
-          onChange={handleChange}
-          required
-          className="w-full bg-purple-950/50 border border-purple-800/30 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-purple-500 transition-colors"
-        >
-          <option value="">Select a service</option>
-          <option value="Training">Training</option>
-          <option value="Consulting">Consulting</option>
-          <option value="Product Development">Product Development</option>
-          <option value="Schedule a Demo">Schedule a Demo</option>
-        </select>
-      </div>
-      <div className="mb-6">
-        <label className="block text-purple-200/80 text-sm font-medium mb-2">Message</label>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={4}
-          required
-          className="w-full bg-purple-950/50 border border-purple-800/30 rounded-xl px-4 py-3 text-white placeholder-purple-200/40 focus:outline-none focus:border-purple-500 transition-colors resize-none"
-          placeholder="Tell us about your project..."
-        />
-      </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="bg-white border border-gray-100 rounded-xl p-8 shadow-sm">
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label className="block text-gray-700 text-sm font-medium mb-2">Name</label>
+              <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all"
+                placeholder="John Doe"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-medium mb-2">Email</label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all"
+                placeholder="john@company.com"
+              />
+            </div>
+          </div>
 
-      {status === "success" && (
-        <div className="mb-4 p-4 bg-green-500/20 border border-green-500/30 rounded-xl text-green-300 text-center">
-          Thank you! Your message has been sent successfully.
-        </div>
+          <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label className="block text-gray-700 text-sm font-medium mb-2">Company</label>
+              <input
+                type="text"
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all"
+                placeholder="Company Name"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 text-sm font-medium mb-2">Service Interest</label>
+              <div className="relative">
+                <select
+                  value={formData.service}
+                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                  className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all appearance-none cursor-pointer"
+                >
+                  <option value="training">Corporate Training</option>
+                  <option value="consulting">Technical Consulting</option>
+                  <option value="products">Enterprise Products</option>
+                  <option value="other">Other</option>
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <label className="block text-gray-700 text-sm font-medium mb-2">Message</label>
+            <textarea
+              required
+              rows={4}
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="w-full bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all resize-none"
+              placeholder="Tell us about your project or training needs..."
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="w-full bg-gray-900 hover:bg-black disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-4 rounded-lg font-semibold transition-colors shadow-sm"
+          >
+            {status === "submitting" ? (
+              <span className="flex items-center justify-center gap-2">
+                <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                </svg>
+                Sending...
+              </span>
+            ) : (
+              "Send Message"
+            )}
+          </button>
+        </form>
       )}
-
-      {status === "error" && (
-        <div className="mb-4 p-4 bg-red-500/20 border border-red-500/30 rounded-xl text-red-300 text-center">
-          Something went wrong. Please try again later.
-        </div>
-      )}
-
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="w-full bg-purple-600 hover:bg-purple-500 disabled:bg-purple-600/50 disabled:cursor-not-allowed text-white py-4 rounded-xl font-semibold transition-colors"
-      >
-        {status === "submitting" ? "Sending..." : "Send Message"}
-      </button>
-    </form>
+    </div>
   );
 }
