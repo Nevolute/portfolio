@@ -36,7 +36,7 @@ export default function ContactForm() {
       });
 
       setStatus("success");
-      setFormData({ name: "", email: "", company: "", interestedIn: "", message: "" });
+      setFormData({ name: "", email: "", company: "", service: "training", message: "" });
       setTimeout(() => setStatus("idle"), 5000);
     } catch {
       setStatus("error");
