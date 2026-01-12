@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ServiceCard from "./components/ServiceCard";
 import ContactForm from "./components/ContactForm";
+import DemoCard from "./components/DemoCard";
 
 const trainingServices = [
   {
@@ -129,6 +130,16 @@ const products = [
     title: "AI/ML Automation",
     description: "Intelligent workflow automation powered by AI and ML",
     features: ["Process Automation", "Predictive Analytics", "Natural Language Processing", "Custom ML Models"],
+  },
+];
+
+const innovationShowcase = [
+  {
+    title: "Legal Guidance Tool",
+    description: "AI-powered legal guidance platform providing instant answers to legal queries with intelligent classification and responsive design.",
+    imageUrl: "",
+    demoUrl: "https://nevolute.github.io/legal-saas/",
+    tags: ["AI/ML", "SaaS", "Legal Tech", "Next.js"],
   },
 ];
 
@@ -285,6 +296,26 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product, index) => (
               <ServiceCard key={index} {...product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Innovation Showcase Section */}
+      <section id="innovation" className="py-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-gold-600 font-bold text-sm uppercase tracking-wider">Innovation Showcase</span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-2 mb-4">
+              Experimental Prototypes & Proof of Concepts
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+              Explore our cutting-edge experiments and innovative prototypes. These proof-of-concept applications demonstrate our technical capabilities and forward-thinking approach.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {innovationShowcase.map((demo, index) => (
+              <DemoCard key={index} {...demo} />
             ))}
           </div>
         </div>
